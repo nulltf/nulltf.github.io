@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Lombok @EqualsAndHashCode 注意事项 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Lombok @EqualsAndHashCode 注意事项正确写法：   如果只写@Data： 1.此注解会生成equals(Object other) 和 hashCode()方法。2.它默认使用非静态，非瞬态的属性3.可通过参数exclude排除一些属性4.可通过参数of指定仅使用哪些属性5.它默认仅使用该类中定义的属性且不调用父类的方法当启动@EqualsAndHashCode时，默认不调">
+  <meta name="description" content="Lombok @EqualsAndHashCode 注意事项正确写法：   如果只写@Data： 1.此注解会生成equals(Object other) 和 hashCode()方法。2.它默认使用非静态，非瞬态的属性3.可通过参数exclude排除一些属性4.可通过参数of指定仅使用哪些属性5.它默认仅使用该类中定义的属性且不调用父类的方法 当启动@EqualsAndHashCode时，默认不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lombok @EqualsAndHashCode 注意事项">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;Lombok-EqualsAndHashCode-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Lombok @EqualsAndHashCode 注意事项正确写法：   如果只写@Data： 1.此注解会生成equals(Object other) 和 hashCode()方法。2.它默认使用非静态，非瞬态的属性3.可通过参数exclude排除一些属性4.可通过参数of指定仅使用哪些属性5.它默认仅使用该类中定义的属性且不调用父类的方法当启动@EqualsAndHashCode时，默认不调">
+<meta property="og:description" content="Lombok @EqualsAndHashCode 注意事项正确写法：   如果只写@Data： 1.此注解会生成equals(Object other) 和 hashCode()方法。2.它默认使用非静态，非瞬态的属性3.可通过参数exclude排除一些属性4.可通过参数of指定仅使用哪些属性5.它默认仅使用该类中定义的属性且不调用父类的方法 当启动@EqualsAndHashCode时，默认不">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;Lombok-EqualsAndHashCode-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9&#x2F;image1.png">
-<meta property="og:updated_time" content="2019-12-06T09:59:53.249Z">
+<meta property="og:updated_time" content="2019-12-06T10:22:13.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;Lombok-EqualsAndHashCode-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9&#x2F;image1.png">
   
@@ -178,7 +178,8 @@
 <img src="/2019/12/06/Lombok-EqualsAndHashCode-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/image1.png" alt="image1" style="zoom:150%;">
 
 <p>如果只写@Data：</p>
-<p>1.此注解会生成equals(Object other) 和 hashCode()方法。<br>2.它默认使用非静态，非瞬态的属性<br>3.可通过参数exclude排除一些属性<br>4.可通过参数of指定仅使用哪些属性<br>5.它默认仅使用该类中定义的属性且不调用父类的方法<br>当启动@EqualsAndHashCode时，默认不调用父类的equals方法，当做类型相等判断时，会遇到麻烦，例如:</p>
+<p>1.此注解会生成equals(Object other) 和 hashCode()方法。<br>2.它默认使用非静态，非瞬态的属性<br>3.可通过参数exclude排除一些属性<br>4.可通过参数of指定仅使用哪些属性<br>5.它默认仅使用该类中定义的属性且不调用父类的方法</p>
+<p>当启动@EqualsAndHashCode时，默认不调用父类的equals方法，当做类型相等判断时，会遇到麻烦，例如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;    <span class="keyword">private</span> Integer id;&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">People</span> </span>&#123;    <span class="keyword">private</span> String name;    <span class="keyword">private</span> Integer age;&#125;</span><br></pre></td></tr></table></figure>
